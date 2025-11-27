@@ -28,9 +28,9 @@ function throwDice() {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(face, index) in diceCount" :key="index">
+            <tr v-for="(amount, index) in diceCount" :key="index">
                 <td>{{ index }}</td>
-                <td>{{ face }}</td>
+                <td>{{ amount }}</td>
             </tr>
         </tbody>
     </table>
