@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
+const diceArray = ref([]);
 const diceCount = ref({
     1: 0,
     2: 0,
@@ -11,9 +12,11 @@ const diceCount = ref({
 });
 
 const throwDice = () => {
+    diceArray.value = [];
     diceCount.value = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0};
     for (let i = 0; i < 8; i++) {
         const result = Math.floor(Math.random() * 6) + 1;
+        diceArray.value.push(result);
         diceCount.value[result]++;
     }
 }
@@ -28,8 +31,8 @@ const throwDice = () => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(amount, index) in diceCount" :key="index">
-                <td>{{ index }}</td>
+            <tr v-for="(amount, number) in diceCount" :key="number">
+                <td>{{ number }}</td>
                 <td>{{ amount }}</td>
             </tr>
         </tbody>
